@@ -179,8 +179,10 @@ export const SphereGalleryScene = ({
       </GizmoHelper> */}
 
       <OrbitControls
+        autoRotate
+        autoRotateSpeed={3}
         enablePan={false}
-        // enableZoom={false}
+        enableZoom={false}
         // maxZoom={10}
         // minZoom={10}
         minPolarAngle={Math.PI / 2.1}
@@ -188,8 +190,8 @@ export const SphereGalleryScene = ({
         // minAzimuthAngle={0.2}
         // maxAzimuthAngle={0.85}
         makeDefault={params?.idFrame === idFrame}
-        rotateSpeed={0.3}
-        zoomSpeed={0.3}
+        rotateSpeed={0.6}
+        zoomSpeed={0.6}
       />
     </>
   )
