@@ -1,16 +1,11 @@
-import * as THREE from 'three'
-import { Canvas,  } from '@react-three/fiber'
-import { HomeScene, Psyco1Scene } from './scenes'
-import { Loader, ScrollControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import { HomeScene, PsycoScene } from './scenes'
+import { ScrollControls } from '@react-three/drei'
 import { Suspense, useState } from 'react'
-import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js'
 
+import { PyscoLoader } from './components'
 
 type CurrentScene = 1 | 2
-
-THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader())
-
-
 
 function App() {
   const [currentScene, setCurrentScene] = useState<CurrentScene>(1)
@@ -34,24 +29,11 @@ function App() {
       >
         <Suspense fallback={null}>
           <ScrollControls pages={3}>
-            {currentScene === 1 ? <HomeScene /> : <Psyco1Scene />}
+            {currentScene === 1 ? <HomeScene /> : <PsycoScene />}
           </ScrollControls>
         </Suspense>
       </Canvas>
-   
-      <Loader
-        dataInterpolation={(p) => `Psyco Poping ${p.toFixed(2)}%`}
-        dataStyles={{ color: 'purple', fontSize: '1.9rem', fontWeight: 'bold' }}
-        barStyles={{ backgroundColor: 'pink', height: '80px', width: '90%' }}
-        containerStyles={{
-          backgroundColor: 'lime',
-          // height: '100vh',
-          // width: '100vw',
-          // position: 'fixed',
-          // top: 0,
-          // left: 0,
-        }}
-      />
+      <PyscoLoader />
     </>
   )
 }

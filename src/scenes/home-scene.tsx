@@ -2,15 +2,13 @@ import * as THREE from 'three'
 import {
   Environment,
   Stars,
-  GizmoHelper,
-  GizmoViewport,
   RoundedBox,
-  useScroll,
+  // useScroll,
 } from '@react-three/drei'
 import { Ground, MeshCurve, VideoPlane } from '../components'
 import { Guitar } from '../models'
 import { Suspense, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+// import { useFrame } from '@react-three/fiber'
 // import { useControls } from 'leva'
 
 const CURVE = new THREE.CatmullRomCurve3([
@@ -97,15 +95,14 @@ const BackgroundBoxes = () => {
 export const HomeScene = () => {
   const cameraPositionPoints = CURVE.getPoints(200)
 
-  const scroll = useScroll()
+  // const scroll = useScroll()
 
-  useFrame((state) => {
+  // useFrame((state) => {
+  //   const positionPoint = CURVE.getPoint(scroll.offset)
 
-    const positionPoint = CURVE.getPoint(scroll.offset)
-
-    state.camera.position.set(positionPoint.x, positionPoint.y, positionPoint.z)
-    state.camera.lookAt(0, 0, 0)
-  })
+  //   state.camera.position.set(positionPoint.x, positionPoint.y, positionPoint.z)
+  //   state.camera.lookAt(0, 0, 0)
+  // })
 
   // todo: Controles de luz
   // const pointLightControls = useControls({
@@ -129,101 +126,101 @@ export const HomeScene = () => {
 
   return (
     <>
-      {/* <OrbitControls makeDefault /> */}
-      {/* <color attach="background" args={['#a0afe0']} /> */}
-      <pointLight
-        position={[
-          pointLightControls.xPos || 5,
-          pointLightControls.yPos,
-          pointLightControls.zPos,
-        ]}
-        color={pointLightControls.color}
-        castShadow
-        intensity={pointLightControls.intensity}
-        shadow-camera-near={0.1}
-        shadow-camera-far={200}
-        shadow-camera-left={-20}
-        shadow-camera-right={20}
-        shadow-camera-top={20}
-        shadow-camera-bottom={-20}
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-        power={pointLightControls.power}
-      />
-      <directionalLight
-        position={[7, 7, -5]}
-        color='#570c0c'
-        castShadow
-        intensity={5}
-        shadow-camera-near={0.1}
-        shadow-camera-far={200}
-        shadow-camera-left={-20}
-        shadow-camera-right={20}
-        shadow-camera-top={20}
-        shadow-camera-bottom={-20}
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-      />
-      <Environment preset='city' />
-      {/* <ambientLight /> */}
-
-      <GizmoHelper alignment='bottom-right' margin={[100, 100]}>
-        <GizmoViewport
-          axisColors={['red', 'green', 'blue']}
-          labelColor='white'
+      <group scale={0.5} position={[0, 0, -10]}>
+        <pointLight
+          position={[
+            pointLightControls.xPos || 5,
+            pointLightControls.yPos,
+            pointLightControls.zPos,
+          ]}
+          color={pointLightControls.color}
+          castShadow
+          intensity={pointLightControls.intensity}
+          shadow-camera-near={0.1}
+          shadow-camera-far={200}
+          shadow-camera-left={-20}
+          shadow-camera-right={20}
+          shadow-camera-top={20}
+          shadow-camera-bottom={-20}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          power={pointLightControls.power}
         />
-      </GizmoHelper>
+        <directionalLight
+          position={[7, 7, -5]}
+          color='#570c0c'
+          castShadow
+          intensity={5}
+          shadow-camera-near={0.1}
+          shadow-camera-far={200}
+          shadow-camera-left={-20}
+          shadow-camera-right={20}
+          shadow-camera-top={20}
+          shadow-camera-bottom={-20}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+        />
+        <Environment preset='city' />
+        {/* <ambientLight /> */}
 
-      <MeshCurve points={cameraPositionPoints} />
+        {/* <GizmoHelper alignment='bottom-right' margin={[100, 100]}>
+          <GizmoViewport
+            axisColors={['red', 'green', 'blue']}
+            labelColor='white'
+          />
+        </GizmoHelper> */}
 
-      <group position={[0, -3, 0]}>
-        <VideoPlane videoUrl='/4x3-mobil.mp4' />
-        {/* <VideoPlane
+        <MeshCurve points={cameraPositionPoints} />
+
+        <group position={[0, -3, 0]}>
+          <VideoPlane videoUrl='/4x3-mobil.mp4' />
+          {/* <VideoPlane
           position={[0, 5, -0.51]}
           rotation-y={Math.PI}
           videoUrl='/4x3-mobil.mp4'
         /> */}
 
-        {/* wall */}
-        <mesh castShadow receiveShadow position={[0, 5, 0]}>
-          <boxGeometry args={[17, 10, 1]} />
-          <meshStandardMaterial
-            color='black'
-            envMapIntensity={0.5}
-            roughness={0.2}
-            metalness={0.8}
-          />
-        </mesh>
+          {/* wall */}
+          <mesh castShadow receiveShadow position={[0, 5, 0]}>
+            <boxGeometry args={[17, 10, 1]} />
+            <meshStandardMaterial
+              color='black'
+              envMapIntensity={0.5}
+              roughness={0.2}
+              metalness={0.8}
+            />
+          </mesh>
 
-        {/* ground */}
-        <mesh position={[0, -5, 0]}>
-          <cylinderGeometry args={[10, 10, 10, 64]} />
-          <meshStandardMaterial
-            color='black'
-            envMapIntensity={0.5}
-            roughness={0}
-            metalness={0}
-          />
-        </mesh>
+          {/* ground */}
+          <mesh position={[0, -5, 0]}>
+            <cylinderGeometry args={[10, 10, 10, 64]} />
+            <meshStandardMaterial
+              color='black'
+              envMapIntensity={0.5}
+              roughness={0}
+              metalness={0}
+            />
+          </mesh>
 
-        <Decorations />
+          <Decorations />
+        </group>
+        <Sphere />
+        <Ground />
+
+        <BackgroundBoxes />
+        <Suspense>
+          <Stars
+            radius={50}
+            depth={50}
+            count={5000}
+            factor={20}
+            saturation={0}
+            fade
+            speed={1}
+          />
+        </Suspense>
+        {/* <EffectsMod/> */}
       </group>
-      <Sphere />
-      <Ground />
-
-      <BackgroundBoxes />
-      <Suspense>
-        <Stars
-          radius={50}
-          depth={50}
-          count={5000}
-          factor={20}
-          saturation={0}
-          fade
-          speed={1}
-        />
-      </Suspense>
-      {/* <EffectsMod/> */}
     </>
   )
 }
