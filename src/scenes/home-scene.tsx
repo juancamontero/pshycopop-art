@@ -1,14 +1,9 @@
 import * as THREE from 'three'
-import {
-  Environment,
-  Stars,
-  RoundedBox,
-  // useScroll,
-} from '@react-three/drei'
+import { Environment, Stars, RoundedBox, useScroll } from '@react-three/drei'
 import { Ground, MeshCurve, VideoPlane } from '../components'
 import { Guitar } from '../models'
 import { Suspense, useRef } from 'react'
-// import { useFrame } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 // import { useControls } from 'leva'
 
 const CURVE = new THREE.CatmullRomCurve3([
@@ -95,23 +90,23 @@ const BackgroundBoxes = () => {
 export const HomeScene = () => {
   const cameraPositionPoints = CURVE.getPoints(200)
 
-  // const scroll = useScroll()
+  const scroll = useScroll()
 
-  // useFrame((state) => {
-  //   const positionPoint = CURVE.getPoint(scroll.offset)
+  useFrame((state) => {
+    const positionPoint = CURVE.getPoint(scroll.offset)
 
-  //   state.camera.position.set(positionPoint.x, positionPoint.y, positionPoint.z)
-  //   state.camera.lookAt(0, 0, 0)
-  // })
+    state.camera.position.set(positionPoint.x, positionPoint.y, positionPoint.z)
+    state.camera.lookAt(0, 0, 0)
+  })
 
   // todo: Controles de luz
   // const pointLightControls = useControls({
-  // intensity: { value: 5, min: 0, max: 20 },
-  // power: { value: 5000, min: 0, max: 10000 },
-  // xPos: { value: 4, min: -20, max: 20 },
-  // yPos: { value: 8, min: -20, max: 20 },
-  // zPos: { value: 6, min: -20, max: 20 },
-  // color: '#570c0c',
+  //   intensity: { value: 5, min: 0, max: 20, step: 1 },
+  //   power: { value: 5000, min: 0, max: 10000, step: 100 },
+  //   xPos: { value: 4, min: -20, max: 20, step: 0.5 },
+  //   yPos: { value: 8, min: -20, max: 20, step: 0.5 },
+  //   zPos: { value: 6, min: -20, max: 20, step: 0.5 },
+  //   color: '#c804cb',
   // })
 
   // ! comment next line if controls are enable
@@ -119,14 +114,14 @@ export const HomeScene = () => {
     intensity: 5,
     power: 5000,
     xPos: 4,
-    yPos: 8,
-    zPos: 6,
-    color: '#570c0c',
+    yPos: 11,
+    zPos: -12.6,
+    color: '#c804cb',
   }
 
   return (
     <>
-      <group scale={0.5} position={[0, 0, -10]}>
+      <group scale={1.75} position={[0, 0, -5]}>
         <pointLight
           position={[
             pointLightControls.xPos || 5,
@@ -147,7 +142,7 @@ export const HomeScene = () => {
           power={pointLightControls.power}
         />
         <directionalLight
-          position={[7, 7, -5]}
+          position={[0, 7, -1]}
           color='#570c0c'
           castShadow
           intensity={5}

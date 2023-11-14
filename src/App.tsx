@@ -1,14 +1,24 @@
-import { Canvas } from '@react-three/fiber'
-import { HomeScene, PsycoScene } from './scenes'
-import { ScrollControls } from '@react-three/drei'
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
+import { useLocation } from 'wouter'
 
-import { PyscoLoader } from './components'
+import { IconoClash, Portals } from './worlds'
 
 type CurrentScene = 1 | 2
 
 function App() {
+  const [, setLocation] = useLocation()
   const [currentScene, setCurrentScene] = useState<CurrentScene>(1)
+
+  const renderScene = (scene: number) => {
+    switch (scene) {
+      case 1:
+        return <IconoClash />
+      case 2:
+        return <Portals />
+      default:
+        return <></>
+    }
+  }
 
   return (
     <>
@@ -16,24 +26,23 @@ function App() {
         <section className='hero'>
           <h1>Pshyco Pop Art</h1>
           <div className='btns-div'>
-            <button onClick={() => setCurrentScene(1)}>Escene 1</button>
-            <button onClick={() => setCurrentScene(2)}>Escene 2</button>
+            <button
+              onClick={() => {
+                setLocation('/')
+                setCurrentScene(1)
+              }}
+            >
+              Icon 0 Clash
+            </button>
+            <button onClick={() => setCurrentScene(2)}>Portals </button>
+            {currentScene === 2 && (
+              <button onClick={() => setLocation('/')}>Back</button>
+            )}
           </div>
-          <h3>Escene {currentScene}</h3>
+          {currentScene === 2 && <h3>Double click to enter portal</h3>}
         </section>
       </main>
-      <Canvas
-        className='canvas'
-        shadows
-        camera={{ position: [0, 30, 60], fov: 15 }}
-      >
-        <Suspense fallback={null}>
-          <ScrollControls pages={3}>
-            {currentScene === 1 ? <HomeScene /> : <PsycoScene />}
-          </ScrollControls>
-        </Suspense>
-      </Canvas>
-      <PyscoLoader />
+      {renderScene(currentScene)}
     </>
   )
 }

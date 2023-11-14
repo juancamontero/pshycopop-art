@@ -13,17 +13,16 @@ import {
 import { useRoute } from 'wouter'
 import { geometry } from 'maath'
 
-import { Ground, HomeBanner, PyscoLoader } from './components'
+import { Ground, PyscoLoader } from '../components'
 
-import { PsycoScene } from './scenes'
+import { PsycoScene } from '../scenes'
 // import { Psyco1Scene } from './scenes' //HomeScene,
 
 extend(geometry)
 
-function Portals() {
+export const Portals  = () => {
   return (
     <>
-      <HomeBanner />
       <Canvas
         className='canvas'
         camera={{ fov: 75, position: [0, 0, 20] }}
@@ -89,8 +88,6 @@ function Portals() {
     </>
   )
 }
-
-export default Portals
 
 type RigType = RootState & {
   controls: CameraControls

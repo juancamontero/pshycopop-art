@@ -36,7 +36,7 @@ export const PsycoScene = () => {
           rotation={[0, -0.5, 0]}
         >
           {/* <SphereGalleryScene idFrame='03' /> */}
-          <Gltf src="pickles_3d_version_of_hyuna_lees_illustration-transformed.glb" scale={16} position={[1, -1, -1]} />
+          <Gltf src="pickles_3d_version_of_hyuna_lees_illustration-transformed.glb" scale={12} position={[0, -1, -1]} />
          
         </PortalFrame>
       </group>

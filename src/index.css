@@ -31,7 +31,6 @@ body {
 }
 
 a {
-
   pointer-events: all;
 }
 /* a:hover {
@@ -97,15 +96,14 @@ h1 {
 
 .app .btns-div {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  margin-top: 8px;
+  margin-top: 12px;
   margin-bottom: 8px;
-
 }
 
 .btns-div button {
-  width: 150px;
+  width: 100%;
   background: #d934bd;
   background-image: -webkit-linear-gradient(top, #d934bd, #2b55b8);
   background-image: -moz-linear-gradient(top, #d934bd, #2b55b8);
@@ -115,14 +113,14 @@ h1 {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
   border-radius: 5px;
-  -webkit-box-shadow: 2px 2px 7px #911a81;
-  -moz-box-shadow: 2px 2px 7px #911a81;
-  box-shadow: 2px 2px 7px #911a81;
+  -webkit-box-shadow: 2px 2px 4px #911a81;
+  -moz-box-shadow: 2px 2px 4px #911a81;
+  box-shadow: 2px 2px 4px #911a81;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
   padding: 4px 8px 4px 8px;
   text-decoration: none;
-  
+  margin-bottom: 12px;
 }
 
 .btns-div button:hover {
@@ -137,18 +135,27 @@ h1 {
 
 /* Mobile styles */
 @media only screen and (max-width: 767px) {
-h1 {
-  font-size: 20px;
-}
-h3 {
-  font-size: 12px;
-}
-.app .hero {
-  top: 1rem;
+  h1 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 12px;
+  }
+  .app .hero {
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
 
-  max-height: 110px !important;
+    max-height: 180px !important;
 
-  justify-content: center;
-  align-items: center;
-}
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btns-div button {
+  width: 224px;
+  }
 }
