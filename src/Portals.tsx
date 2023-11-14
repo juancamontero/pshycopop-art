@@ -96,7 +96,7 @@ type RigType = RootState & {
   controls: CameraControls
 }
 function Rig({
-  position = new THREE.Vector3(0, -0.25, 3),
+  position = new THREE.Vector3(0, -0.25, 4),
   focus = new THREE.Vector3(0, 0, 0),
 }) {
   const { controls, scene } = useThree<RigType>()

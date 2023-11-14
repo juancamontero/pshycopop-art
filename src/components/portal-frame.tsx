@@ -54,11 +54,11 @@ export const PortalFrame = ({
       <group {...props}>
         <Text
           color="#67db3d"
-          fontSize={0.3}
+          fontSize={0.25}
           anchorY='top'
           anchorX='left'
           lineHeight={0.8}
-          position={[-0.575, 1.2, 0.01]}
+          position={[-0.65, 1.2, 0.01]}
           material-toneMapped={false}
         >
           {name}
@@ -73,9 +73,9 @@ export const PortalFrame = ({
           /{idFrame}
         </Text>
         <Text
-          fontSize={0.04}
+          fontSize={0.08}
           anchorX='right'
-          position={[-0.15, -0.877, 0.01]}
+          position={[-0.015, -0.877, 0.01]}
           material-toneMapped={false}
           color="#67db3d"
         >

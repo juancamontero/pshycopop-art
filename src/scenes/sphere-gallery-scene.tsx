@@ -23,7 +23,7 @@ export const SphereGalleryScene = ({
   return (
     <>
       <PerspectiveCamera
-        position={[0, 0, 3]}
+        position={[0, 0, 2]}
         fov={60}
         makeDefault={params?.idFrame === idFrame}
       />
