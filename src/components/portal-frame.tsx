@@ -95,10 +95,9 @@ export const PortalFrame = ({
 
           <MeshPortalMaterial
             ref={portal}
-            events={params?.idFrame === idFrame} //Deshabilito eventos cuando estoy deontro
+            events={params?.idFrame === idFrame} //Deshabilito eventos cuando estoy dentro
             side={THREE.DoubleSide}
             worldUnits={false}
-         
             blend={0.5}
           >
             <color attach='background' args={[bg]} />

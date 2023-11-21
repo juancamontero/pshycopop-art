@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 
 import { Canvas } from '@react-three/fiber'
-import { ScrollControls } from '@react-three/drei'
+import { ScrollControls, Stats } from '@react-three/drei'
 
 import { HomeScene } from '../scenes'
 
@@ -21,6 +21,7 @@ export const IconoClash = () => {
           </ScrollControls>
         </Suspense>
       </Canvas>
+      <Stats />
       <PyscoLoader />
     </>
   )

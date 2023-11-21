@@ -1,2 +1,5 @@
 export { IconoClash } from './icon-o-clash'
 export { Portals } from './portals'
+export { SculptureSpotlight } from './sculpture-spotlight'
+export { Train } from './train'
+export { Tutorial } from './tutorials'
